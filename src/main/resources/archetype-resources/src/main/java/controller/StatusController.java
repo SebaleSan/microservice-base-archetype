@@ -1,0 +1,25 @@
+#set( $symbol_dollar = '$' )
+package ${package}.controller;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import ${package}.dto.StatusResponse;
+
+@RestController
+@RequestMapping("/api/status")
+public class StatusController {
+
+    private final String serviceName;
+
+    public StatusController(@Value("${symbol_dollar}{spring.application.name}") String serviceName) {
+        this.serviceName = serviceName;
+    }
+
+    @GetMapping
+    public StatusResponse status() {
+        return new StatusResponse(serviceName, "UP");
+    }
+}
