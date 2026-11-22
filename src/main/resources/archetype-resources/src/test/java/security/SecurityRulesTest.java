@@ -21,7 +21,9 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.test.web.servlet.MockMvc;
 
-@WebMvcTest
+import ${package}.controller.StatusController;
+
+@WebMvcTest(StatusController.class)
 @Import({SecurityConfig.class, SecurityRulesTest.TestUsers.class})
 class SecurityRulesTest {
 
